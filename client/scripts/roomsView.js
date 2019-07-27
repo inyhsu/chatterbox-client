@@ -5,40 +5,31 @@ var RoomsView = {
   $rooms: $('#rooms'),
 
   initialize: function() {
-    this.$rooms.on('click', this.$button, Rooms.add);
-    // Parse.readAll((data) => {
-    //   console.log(data);
-    // })
-    // let rooms = JSON.parse(window.localStorage.getItem('room'));
-    // if(rooms){
-    //   for(let i = 0; i < rooms.length; i++) {
-    //     this.$select.append(`<option>${rooms[i]}</option>`)
-    //   }
-    // }
-
+    this.$button.on('click', Rooms.add);
+    Parse.readAll((data) => {
+      this.render(data.results);
+    })
   },
 
-  // render: function(data){
-  //   if (typeof data ==='string') {
-  //     this.$select.append(`<option>${data}</option>`);
+  render: function(data) {
+    let obj = {};
 
-  //     if(!window.localStorage.getItem('room')){
-  //       let rooms = [];
-  //       rooms.push(data);
-  //       window.localStorage.setItem('room', JSON.stringify(rooms));
-  //     }else {
-  //       let rooms = JSON.parse(window.localStorage.getItem('room'));
-  //       rooms.push(data);
-  //       window.localStorage.setItem('room', JSON.stringify(rooms));
-  //     }
+    for(let i = 0; i < data.length ; i++){
+      let chat = data[i];
+      if(chat.roomname) {
+        obj[chat.roomname] = chat.roomname;
+      }
+    }
 
-  //   }
-  // },
+    for(room in obj) {
+      this.renderRoom(room);
+    }
+  },
 
   renderRoom: function(data) {
-    console.log(data);
+
     if (typeof data ==='string') {
-      this.$select.append(`<option>${data}</option>`);
+      this.$select.append(`<option value="${data}">${data}</option>`);
     }
   }
 

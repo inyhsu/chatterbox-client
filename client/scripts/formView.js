@@ -1,6 +1,7 @@
 var FormView = {
 
   $form: $('form'),
+  $chats: $('#chats'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
@@ -12,9 +13,12 @@ var FormView = {
     var Messages = {
       username: window.location.search.substr(10),
       text: $('#message').val(),
-      roomname: '1'
+      roomname: $('#rooms select').val(),
     };
+    // console.log(Messages);
     Parse.create(Messages);
+
+    setTimeout(function(){ location.reload(); }, 1000);
   },
 
   setStatus: function(active) {
