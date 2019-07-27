@@ -18,7 +18,9 @@ var FormView = {
     // console.log(Messages);
     Parse.create(Messages);
 
-    setTimeout(function(){ location.reload(); }, 1000);
+    FormView.$chats.html('');
+    $('#message').val('');
+    MessagesView.initialize();
   },
 
   setStatus: function(active) {

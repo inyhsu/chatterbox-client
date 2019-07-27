@@ -16,7 +16,7 @@ var RoomsView = {
 
     for(let i = 0; i < data.length ; i++){
       let chat = data[i];
-      if(chat.roomname) {
+      if(chat.roomname && !chat.roomname.includes('<') && !chat.roomname.includes('$')) {
         obj[chat.roomname] = chat.roomname;
       }
     }
