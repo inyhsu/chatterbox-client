@@ -1,6 +1,5 @@
 var Messages = {
-  username: 'Ingrid',
-  text: 'Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-  roomname: 'HR'
+  username: window.location.search.substr(10),
+  text: $('#message').val(),
+  roomname: 'Testing'
 };
-

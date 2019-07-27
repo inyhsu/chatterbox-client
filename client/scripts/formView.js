@@ -9,12 +9,7 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    var Messages = {
-      username: `Ingrid & Hien`,
-      text: $('#message').val(),
-      // roomname: Roomview.renderRoom();
-    };
-    // console.log(Messages);
+    console.log(Messages);
     Parse.create(Messages)
   },
 

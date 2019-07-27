@@ -2,13 +2,20 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
+  $room: $('#rooms'),
 
   initialize: function() {
     Parse.readAll((data) => {
       // examine the response from the server request:
       this.renderRoom(data);
-
     });
+    RoomsView.$button.on('click', RoomsView.addRoom);
+  },
+
+  addRoom: function(event){
+    event.preventDefault();
+    let r = $('#room').val();
+    RoomsView.renderRoom(r);
   },
 
   renderRoom: function(data) {
