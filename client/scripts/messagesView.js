@@ -1,12 +1,15 @@
 var MessagesView = {
 
   $chats: $('#chats'),
+  $chat: $('.chat'),
 
   initialize: function() {
     Parse.readAll((data) => {
       // examine the response from the server request:
       this.renderMessage(data);
     });
+    this.$chats.on('click', this.$chat, Friends.toggleStatus)
+
   },
 
   renderMessage: function(data) {
