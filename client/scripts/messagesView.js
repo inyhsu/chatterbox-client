@@ -3,6 +3,10 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
+    Parse.readAll((data) => {
+      // examine the response from the server request:
+      this.renderMessage(data);
+    });
   },
 
   renderMessage: function(data) {

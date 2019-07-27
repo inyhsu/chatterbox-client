@@ -4,8 +4,11 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // FormView.$form.on('submit', FormView.handleSubmit);
-    // RoomsView.$button.on('submit', RoomsView.renderRoom)
+    Parse.readAll((data) => {
+      // examine the response from the server request:
+      this.renderRoom(data);
+
+    });
   },
 
   renderRoom: function(data) {
