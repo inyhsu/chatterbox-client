@@ -1,4 +1,6 @@
 var Rooms = {
-  value: $('#room').val(),
+  add: function(){
+    RoomsView.renderRoom($('#message').val())
+  },
 };
 

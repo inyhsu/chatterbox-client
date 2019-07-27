@@ -10,7 +10,7 @@ var MessagesView = {
   },
 
   renderMessage: function(data) {
-
+    console.log(data);
     var html= "";
 
     for(let key in data) {
